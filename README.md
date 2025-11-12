@@ -1,23 +1,27 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+# CHCP ERC-20 Token
 
-/*
-    CHCPToken — An ERC-20 compliant token with clear explanations.
-    This contract follows the ERC-20 standard so it’s compatible with
-    wallets like Trust Wallet, MetaMask, and exchanges that support ERC-20 tokens.
-*/
+This repository contains the smart contract for the **CHCP Wallet Token** (ERC-20).
 
-contract CHCPToken {
-    // --- Basic Token Information ---
-    string public name = "CHCP Wallet Token";      // Full token name
-    string public symbol = "CHCP";                 // Token ticker symbol
-    uint8 public decimals = 18;                    // Number of decimal places
-    uint256 public totalSupply;                    // Total amount of tokens in existence
+## Features
+- Standard ERC-20 functions: `transfer`, `approve`, `transferFrom`
+- Optional mint and burn functions (controlled by deployer)
+- Compatible with Ethereum, BNB Smart Chain, Polygon
+- Fully commented for easy understanding
 
-    // --- Mappings (Core Storage) ---
-    mapping(address => uint256) public balanceOf;  // Tracks each address’s balance
-    mapping(address => mapping(address => uint256)) public allowance; 
-    // allowance[owner][spender] -> amount authorized for spender to spend
+## Deployment
+
+### Using Remix:
+1. Open [Remix](https://remix.ethereum.org)
+2. Create a new file `CHCPToken.sol` under `/contracts`
+3. Paste the code
+4. Compile with Solidity ^0.8.0
+5. Deploy using Injected Provider (MetaMask / Trust Wallet)
+6. Set initial supply (e.g., 1000000 tokens)
+
+### Using Hardhat:
+1. Run `npm install` in the repo
+2. Configure `.env` with `PRIVATE_KEY` and `RPC_URL`
+3. Run `npx hardhat run scripts/deploy.js --network <network>`    // allowance[owner][spender] -> amount authorized for spender to spend
 
     // --- Events (to notify off-chain apps like explorers & wallets) ---
     event Transfer(address indexed from, address indexed to, uint256 value);
